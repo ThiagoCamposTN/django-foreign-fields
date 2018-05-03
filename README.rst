@@ -9,19 +9,6 @@ Quick start
 
    $ pip install django-foreign-fields
 
-Optional
-^^^^^^^^
-If it's desired to test the package fields, it's necessary to install it on the project settings:
-
-1. Add "django-foreign-fields" to your INSTALLED_APPS setting like this::
-
-    INSTALLED_APPS = [
-        ...
-        'django-foreign-fields',
-    ]
-
-2. Run `python manage.py test django-foreign-fields` to test the foreign fields.
-
 Usage
 -----
 Django-foreign-fields adds two new form fields ``ForeignField`` and ``TextAreaToManyField``.
