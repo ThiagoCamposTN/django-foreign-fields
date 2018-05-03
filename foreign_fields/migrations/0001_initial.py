@@ -31,11 +31,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='referrer',
             name='foreign',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='foreign_test', to='customFields.Target'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='foreign_test', to='foreign_fields.Target'),
         ),
         migrations.AddField(
             model_name='referrer',
             name='many',
-            field=models.ManyToManyField(blank=True, related_name='many_test', to='customFields.Target'),
+            field=models.ManyToManyField(blank=True, related_name='many_test', to='foreign_fields.Target'),
         ),
     ]

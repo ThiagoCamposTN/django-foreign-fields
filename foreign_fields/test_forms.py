@@ -6,7 +6,7 @@ from .test_models import Referrer, Target
 
 
 class ForeignFormTestDateTime(ModelForm):
-    foreign = ForeignField(to='customFields.Target', selector="datetimenew")
+    foreign = ForeignField(to='foreign_fields.Target', selector="datetimenew")
 
     class Meta:
         model = Referrer
@@ -17,7 +17,7 @@ class ForeignFormTestDateTime(ModelForm):
         self.fields['foreign'].widget = SelectDateWidget()
 
 class ForeignFormTestInteger(ModelForm):
-    foreign = ForeignField(to='customFields.Target', selector="integer")
+    foreign = ForeignField(to='foreign_fields.Target', selector="integer")
 
     class Meta:
         model = Referrer
@@ -28,14 +28,14 @@ class ForeignFormTestInteger(ModelForm):
         self.fields['foreign'].widget = NumberInput()
 
 class ForeignFormTestDefaultWidget(ModelForm):
-    foreign = ForeignField(to='customFields.Target', selector="char")
+    foreign = ForeignField(to='foreign_fields.Target', selector="char")
 
     class Meta:
         model = Referrer
         fields = "__all__"
 
 class ForeignFormAreaTestDefaultWidget(ModelForm):
-    many = TextAreaToManyField(to='customFields.Target', selector="char")
+    many = TextAreaToManyField(to='foreign_fields.Target', selector="char")
 
     class Meta:
         model = Referrer
