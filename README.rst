@@ -1,6 +1,11 @@
 =====================
 Django Foreign Fields
 =====================
+
+.. image:: https://img.shields.io/pypi/v/django-foreign-fields.svg
+   :target: https://pypi.python.org/pypi/django-foreign-fields
+   :alt: PyPI
+
 Django Foreign Fields is a Django app that offers two new form fields that help handling foreign relationships in a easier way.
 
 Quick start
