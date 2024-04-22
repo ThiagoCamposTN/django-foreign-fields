@@ -23,6 +23,7 @@ setup(
     license='MIT License',
     description='A Django app with new form fields for handling foreign relationships.',
     long_description=README,
+    long_description_content_type='text/markdown',
     url='https://github.com/ThiagoCTN/django-foreign-fields/',
     author='Thiago Nascimento',
     author_email='thiagocampostn@gmail.com',
