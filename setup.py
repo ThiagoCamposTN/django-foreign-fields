@@ -3,7 +3,11 @@ import subprocess
 from setuptools import find_packages, setup
 
 def get_latest_tag():
-    return subprocess.check_output(['git', 'describe', '--tags']).decode('utf-8').strip()
+    ref = os.getenv("GITHUB_REF")
+    if ref:
+        return ref.split("/")[-1]
+    else:
+        return "0.0.0"  # Default version
 
 with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
     README = readme.read()
