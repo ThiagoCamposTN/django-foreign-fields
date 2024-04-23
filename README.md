@@ -5,9 +5,9 @@
 Django Foreign Fields is a Django app that offers two new form fields that help handling foreign relationships in a easier way.
 
 ## Quick start
-``bash
+```bash
 pip install django-foreign-fields
-``
+```
 
 ## Usage
 
@@ -36,11 +36,11 @@ Breaks all lines in a `Textarea` and use each one to find objects that correspon
 Given you already have two models, one `Target` that holds some information and one `Referrer` that will make a foreign relationship to a particular field:
 
 ```python
-   class Target(models.Model):
-      name = models.TextField()
+class Target(models.Model):
+   name = models.TextField()
 
-   class Referrer(models.Model):
-      foreign = models.ForeignKey()
+class Referrer(models.Model):
+   foreign = models.ForeignKey()
 ```
 
 It will be needed a new form for the `Referrer`.
@@ -48,13 +48,13 @@ It will be needed a new form for the `Referrer`.
 The original form field that holds the foreign key relation on the `Referrer` will be substituted for the `ForeignField`:
 
 ```python
-   import foreign_fields.ForeignField
+import foreign_fields.ForeignField
 
-   class ReferrerForm(forms.ModelForm):
-      foreign = foreign_fields.ForeignField(to=Target, selector='name')
-      
-      class Meta:
-         model = Referrer
+class ReferrerForm(forms.ModelForm):
+   foreign = foreign_fields.ForeignField(to=Target, selector='name')
+   
+   class Meta:
+      model = Referrer
 ```
 
 Now you can use the form on your `View`. The default widget is `TextInput`, so when you enter a string in the field and save the form, the `ForeignField` will search for a `Target` that has the given string in it's `name` field that must be unique. If the field is not unique, it will be given a `ValidationError`.
@@ -66,11 +66,11 @@ It's possible to change the foreign widget into others such as `NumberInput` or 
 Given you already have two models, one `Target` that holds some information and one `Referrer` that will make a many to many relationship to a particular field:
 
 ```python
-   class Target(models.Model):
-      name = models.TextField()
+class Target(models.Model):
+   name = models.TextField()
 
-   class Referrer(models.Model):
-      many_to_many = models.ManyToManyField()
+class Referrer(models.Model):
+   many_to_many = models.ManyToManyField()
 ```
 
 It will be needed a new form for the `Referrer`.
@@ -78,13 +78,13 @@ It will be needed a new form for the `Referrer`.
 The original form field that holds the many to many relation on the `Referrer` will be substituted for the `TextAreaToManyField`:
 
 ```python
-   import foreign_fields.TextAreaToManyField
+import foreign_fields.TextAreaToManyField
 
-   class ReferrerForm(forms.ModelForm):
-      many_to_many = foreign_fields.TextAreaToManyField(to=Target, selector='name')
-      
-      class Meta:
-           model = Referrer
+class ReferrerForm(forms.ModelForm):
+   many_to_many = foreign_fields.TextAreaToManyField(to=Target, selector='name')
+   
+   class Meta:
+        model = Referrer
 ```
 
 Now you can use the form on your `View`. The default widget is `Textarea`, so when you enter a text in the field and save the form, the `TextAreaToManyField` will split each line and search for a unique `Target` by line that has the given string in it's `name` field. If the field is not unique, it will be given a `ValidationError`.
